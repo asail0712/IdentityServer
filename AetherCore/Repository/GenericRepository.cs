@@ -435,5 +435,16 @@ namespace AetherCore.Repository
                 throw new DatabaseOperationException("FindLastAsync", typeof(TEntity).Name, ex);
             }
         }
+
+        /*==============================
+         * 快取清理流程
+         * ============================*/
+        protected void InvalidateCache(string key)
+        {
+            _cache.Remove($"{_cachePrefix}:{key}");
+            _cache.Remove($"{_cachePrefix}:all");
+            _cache.Remove($"{_cachePrefix}:findLast");
+            _cache.Remove($"{_cachePrefix}:exists:{key}");
+        }
     }
 }
