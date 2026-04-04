@@ -19,6 +19,8 @@ using Repository;
 using Repository.Interface;
 using Service.Interface;
 using System.Net.Http;
+using System.Security.Claims;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Service
 {
@@ -97,10 +99,17 @@ namespace Service
                 auth = await _repository.InsertAsync(auth);
             }
 
-            // 5. 回傳登入結果
+            // 5. 加上Claim
+            var extraClaims = new List<Claim>
+            {
+                new Claim(ClaimLoginType.AvatarUrl, profile.PictureUrl ?? string.Empty),
+                new Claim(ClaimLoginType.Provider, ProviderDefine.Line)
+            };
+
+            // 6. 回傳登入結果
             return new LineLoginResponse
             {
-                AccessToken = _tokenService.GenerateToken(auth.UserId, profile.DisplayName, TimeSpan.FromDays(7))
+                AccessToken = _tokenService.GenerateToken(auth.UserId, profile.DisplayName, TimeSpan.FromDays(7), extraClaims)
             };
         }
 
@@ -119,10 +128,17 @@ namespace Service
             if (!string.Equals(auth.PasswordHash, inputHash, StringComparison.Ordinal))
                 throw new InvalidCredentialsException("密碼有誤");
 
-            // 3. 回傳登入結果
+            // 3. 加上Claim
+            var extraClaims = new List<Claim>
+            {
+                new Claim(ClaimLoginType.AvatarUrl, string.Empty),
+                new Claim(ClaimLoginType.Provider, ProviderDefine.Password)
+            };
+
+            // 4. 回傳登入結果
             return new PasswordLoginResponse
             {
-                AccessToken = _tokenService.GenerateToken(auth.UserId, auth.Provider, TimeSpan.FromDays(7))
+                AccessToken = _tokenService.GenerateToken(auth.UserId, request.Account, TimeSpan.FromDays(7), extraClaims)
             };
         }
     }

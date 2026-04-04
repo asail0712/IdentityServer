@@ -37,7 +37,6 @@ namespace AetherCore.Utility.JWT
 
             // 定義要放入 Token 的 Claims
             var claims = new List<Claim>
-
             {
                 new Claim(JwtRegisteredClaimNames.Sub, userId),             // 主體 (Subject)
                 new Claim(JwtRegisteredClaimNames.UniqueName, userName),    // 使用者名稱
