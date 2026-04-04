@@ -6,7 +6,7 @@ on:
       - stage   # 實際會 push 的分支
 
 env:
-  AZURE_WEBAPP_NAME: IdentityServer
+  AZURE_WEBAPP_NAME: Aether-IdentityServer
   DOTNET_VERSION: "8.0.x"
   PROJECT_PATH: "./IdentityServer/IdentityServer.csproj"
   PUBLISH_DIR: "./publish"
