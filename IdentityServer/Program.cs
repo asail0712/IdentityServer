@@ -96,9 +96,9 @@ namespace IdentityServer
                 ValidateAudience            = true,
                 ValidateLifetime            = true,
                 ValidateIssuerSigningKey    = true,
-                Issuer                      = builder.Configuration["Jwt:App:Issuer"],
-                Audience                    = builder.Configuration["Jwt:App:Audience"],
-                Secret                      = builder.Configuration["Jwt:App:Secret"]
+                Issuer                      = builder.Configuration["Jwt:Service:Issuer"],
+                Audience                    = builder.Configuration["Jwt:Service:Audience"],
+                Secret                      = builder.Configuration["Jwt:Service:Secret"]
             };
 
             // 第一個 JwtOptions 為預設方案
