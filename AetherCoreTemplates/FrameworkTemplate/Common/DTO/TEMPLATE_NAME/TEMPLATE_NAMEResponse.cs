@@ -2,6 +2,6 @@
 {
     public class TEMPLATE_NAMEResponse
     {
-        public string Id { get; set; }      = string.Empty;
+        public string Id            { get; set; } = string.Empty;
     }
 }
