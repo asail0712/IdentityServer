@@ -89,11 +89,24 @@ namespace IdentityServer
                 Secret                      = builder.Configuration["Jwt:App:Secret"]
             };
 
+            JwtOptions serviceJwtOptions = new JwtOptions
+            {
+                JwtName                     = "ServiceJwt",
+                ValidateIssuer              = true,
+                ValidateAudience            = true,
+                ValidateLifetime            = true,
+                ValidateIssuerSigningKey    = true,
+                Issuer                      = builder.Configuration["Jwt:App:Issuer"],
+                Audience                    = builder.Configuration["Jwt:App:Audience"],
+                Secret                      = builder.Configuration["Jwt:App:Secret"]
+            };
+
             // 第一個 JwtOptions 為預設方案
             jwtOptions = new List<JwtOptions>
             {
                 appJwtOptions,
-                adminJwtOptions
+                adminJwtOptions,
+                serviceJwtOptions
             };
 
             builder.Services.AddJwtAuthentication(jwtOptions);

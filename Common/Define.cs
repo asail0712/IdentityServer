@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using MongoDB.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,10 @@ namespace Common
     {
         public const string AvatarUrl   = "AVATARURL";
         public const string Provider    = "PROVIDER";
+
+        public const string EndPoint    = "EndPoint";
+        public const string RegistryId  = "RegistryId";
+        public const string ServiceId   = "ServiceId";
     }
 
     static public class CommonDefine
