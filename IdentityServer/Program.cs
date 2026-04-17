@@ -38,7 +38,7 @@ namespace IdentityServer
             /********************************************
              * 加上Database Settings
              * ******************************************/
-            builder.Services.InitialMongoDB(builder.Configuration);
+            //builder.Services.InitialMongoDB(builder.Configuration);
             await builder.Services.InitialMongoDBEntity(builder.Configuration);
 
             /********************************************

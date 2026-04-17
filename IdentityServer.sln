@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36623.8
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AetherCore", "AetherCore\AetherCore.csproj", "{38F83C2B-E134-6678-7AA6-EB1865875AE3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AetherCoreTemplates", "AetherCoreTemplates\AetherCoreTemplates.csproj", "{1173887B-E68D-957B-3DEA-82C9865B52DD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{DB311AE5-E3CB-4BD2-998B-29F03A004888}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{FFA0EA84-69D8-441C-ADB0-E068B853BD3B}"
@@ -17,20 +13,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer", "IdentityServer\IdentityServer.csproj", "{AF5BEFDA-28AE-7603-040D-593562AC6BD5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AetherCore", "..\_Shared\AetherCore\AetherCore.csproj", "{BC0651BF-038C-BE58-2314-30D713D79AF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AetherCoreTemplates", "..\_Shared\AetherCoreTemplates\AetherCoreTemplates.csproj", "{9516726B-0F4F-6934-72B8-9A2B8B184DF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{38F83C2B-E134-6678-7AA6-EB1865875AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38F83C2B-E134-6678-7AA6-EB1865875AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38F83C2B-E134-6678-7AA6-EB1865875AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38F83C2B-E134-6678-7AA6-EB1865875AE3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1173887B-E68D-957B-3DEA-82C9865B52DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1173887B-E68D-957B-3DEA-82C9865B52DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1173887B-E68D-957B-3DEA-82C9865B52DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1173887B-E68D-957B-3DEA-82C9865B52DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DB311AE5-E3CB-4BD2-998B-29F03A004888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DB311AE5-E3CB-4BD2-998B-29F03A004888}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB311AE5-E3CB-4BD2-998B-29F03A004888}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +43,14 @@ Global
 		{AF5BEFDA-28AE-7603-040D-593562AC6BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF5BEFDA-28AE-7603-040D-593562AC6BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF5BEFDA-28AE-7603-040D-593562AC6BD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC0651BF-038C-BE58-2314-30D713D79AF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC0651BF-038C-BE58-2314-30D713D79AF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC0651BF-038C-BE58-2314-30D713D79AF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC0651BF-038C-BE58-2314-30D713D79AF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9516726B-0F4F-6934-72B8-9A2B8B184DF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9516726B-0F4F-6934-72B8-9A2B8B184DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9516726B-0F4F-6934-72B8-9A2B8B184DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9516726B-0F4F-6934-72B8-9A2B8B184DF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

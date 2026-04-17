@@ -29,8 +29,8 @@ namespace Service
     {
         private readonly IUserRepository _userRepository;
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly LineLoginSettings _lineSettings;
         private readonly ITokenService _tokenService;
+        private readonly LineLoginSettings _lineSettings;
 
         public LoginService(ILoginRepository repo,
                             IMapper mapper,
