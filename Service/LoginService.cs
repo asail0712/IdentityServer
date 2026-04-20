@@ -72,7 +72,11 @@ namespace Service
                 throw new InvalidCredentialsException("無法從 LINE profile 取得 userId");
 
             // 3. 查 Auth 是否存在
-            var auth = await _repository.GetByProviderAsync(ProviderDefine.Line, profile.UserId);
+            var auth = (await _repository.QueryAsync(x =>
+                x.IsEnabled &&
+                x.Provider == ProviderDefine.Line &&
+                x.ProviderUserId == profile.UserId))
+                ?.FirstOrDefault();
 
             // 4. 第一次登入：建立 User + Auth
             if (auth == null)
@@ -119,7 +123,11 @@ namespace Service
                 throw new InvalidCredentialsException("帳密不得為空");
 
             // 1. 查 Auth 是否存在
-            var auth = await _repository.GetByProviderAsync(ProviderDefine.Password, request.Account);
+            var auth = (await _repository.QueryAsync(x =>
+                x.IsEnabled &&
+                x.Provider == ProviderDefine.Password &&
+                x.Account == request.Account))
+                ?.FirstOrDefault();
             if (auth == null)
                 throw new InvalidCredentialsException("帳號不存在");
 

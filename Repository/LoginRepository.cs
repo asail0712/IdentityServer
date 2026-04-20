@@ -18,21 +18,5 @@ namespace Repository
         {
 
         }
-
-        public async Task<LoginEntity> GetByProviderAsync(string provider, string providerUserId)
-        {
-            string cacheKey = $"LoginEntity_{provider}_{providerUserId}";
-            if (_cache.TryGetValue(cacheKey, out LoginEntity cachedEntity))
-            {
-                return cachedEntity;
-            }
-
-            var entity = await _dataAccess.GetByProviderAsync(provider, providerUserId);
-            if (entity != null)
-            {
-                _cache.Set(cacheKey, entity, TimeSpan.FromMinutes(_cacheDurationMinutes));
-            }
-            return entity;
-        }
     }
 }
