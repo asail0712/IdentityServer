@@ -63,7 +63,7 @@ namespace IdentityServer.Extension
 
                 List<string> apiInTest = new List<string>
                 {
-
+                    "ServiceTokenController.RequestServiceToken"
                 };
 
                 if (docName == "App" && apiInAPP.Contains(combinedName))

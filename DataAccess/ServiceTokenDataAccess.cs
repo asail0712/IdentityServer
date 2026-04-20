@@ -1,16 +1,16 @@
-using AetherCore.DataAccess;
+﻿using AetherCore.DataAccess;
 using AetherCore.Utility.Attributes;
 using AutoMapper;
-using Common.DTO.Login;
+using Common.DTO.ServiceToken;
 using DataAccess.Interface;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DataAccess
 {
     [AutoInject(ServiceLifetime.Scoped)]
-    public class LoginDataAccess : MongoEntityDataAccess<LoginEntity, LoginDocument>, ILoginDataAccess
+    public class ServiceTokenDataAccess : MongoEntityDataAccess<ServiceTokenEntity, ServiceTokenDocument>, IServiceTokenDataAccess
     {
-        public LoginDataAccess(IMapper mapper)
+        public ServiceTokenDataAccess(IMapper mapper)
             : base(mapper)
         {
         }

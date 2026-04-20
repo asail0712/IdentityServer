@@ -38,7 +38,7 @@ namespace IdentityServer
             /********************************************
              * 加上Database Settings
              * ******************************************/
-            builder.Services.InitialMongoDB(builder.Configuration);
+            //builder.Services.InitialMongoDB(builder.Configuration);
             await builder.Services.InitialMongoDBEntity(builder.Configuration);
 
             /********************************************
@@ -89,11 +89,24 @@ namespace IdentityServer
                 Secret                      = builder.Configuration["Jwt:App:Secret"]
             };
 
+            JwtOptions serviceJwtOptions = new JwtOptions
+            {
+                JwtName                     = "ServiceJwt",
+                ValidateIssuer              = true,
+                ValidateAudience            = true,
+                ValidateLifetime            = true,
+                ValidateIssuerSigningKey    = true,
+                Issuer                      = builder.Configuration["Jwt:Service:Issuer"],
+                Audience                    = builder.Configuration["Jwt:Service:Audience"],
+                Secret                      = builder.Configuration["Jwt:Service:Secret"]
+            };
+
             // 第一個 JwtOptions 為預設方案
             jwtOptions = new List<JwtOptions>
             {
                 appJwtOptions,
-                adminJwtOptions
+                adminJwtOptions,
+                serviceJwtOptions
             };
 
             builder.Services.AddJwtAuthentication(jwtOptions);

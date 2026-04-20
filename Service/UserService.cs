@@ -31,7 +31,11 @@ namespace Service
                 throw new InvalidCredentialsException("Account 和 Password 不可為空");
 
             // 1. 查 Auth 是否存在
-            var existingAuth = await _authRepo.GetByProviderAsync(ProviderDefine.Password, request.Account);
+            var existingAuth = (await _authRepo.QueryAsync(x =>
+                x.IsEnabled &&
+                x.Provider == ProviderDefine.Password &&
+                x.Account == request.Account))
+                ?.FirstOrDefault();
             if (existingAuth != null)
                 throw new InvalidCredentialsException("帳號已存在");
 
