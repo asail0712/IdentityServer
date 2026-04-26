@@ -1,0 +1,52 @@
+﻿name: Deploy to Azure Web App
+
+on:
+  push:
+    branches:
+      - stage   # 實際會 push 的分支
+
+env:
+  AZURE_WEBAPP_NAME: Aether-IdentityServer
+  DOTNET_VERSION: "8.0.x"
+  PROJECT_PATH: "./IdentityServer/IdentityServer.csproj"
+  PUBLISH_DIR: "./publish"
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+   # 1. 取得原始碼 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. 安裝 .NET SDK
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      # 3. 還原套件
+      - name: Restore
+        run: dotnet restore ${{ env.PROJECT_PATH }}
+
+      # 4. 編譯
+      - name: Build
+        run: dotnet build ${{ env.PROJECT_PATH }} -c Release --no-restore
+
+      # 5. 發布
+      - name: Publish
+        run: dotnet publish ${{ env.PROJECT_PATH }} -c Release -o ${{ env.PUBLISH_DIR }} --no-build
+
+      # 6. 登入Azure
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # 7. 部署到 Azure App Service
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          package: ${{ env.PUBLISH_DIR }}
