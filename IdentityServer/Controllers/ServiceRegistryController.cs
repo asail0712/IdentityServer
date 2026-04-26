@@ -18,7 +18,7 @@ namespace IdentityServer.Controllers
     public class ServiceRegistryController : GenericController<ServiceRegistryRequest, ServiceRegistryResponse, IServiceRegistryService>
     {
         public ServiceRegistryController(IServiceRegistryService service)
-            : base(service, CrudOperation.None)
+            : base(service, CrudOperation.Create)
         {
 
         }
