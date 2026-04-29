@@ -14,6 +14,7 @@ namespace IdentityServer.Controllers
     [ApiController]
     [Route("[controller]")]
     [CrudSummary("服務器註冊資料")]
+    [SwaggerApi("Test", CrudOperations = CrudOperation.Create)]
     //[CrudAuthorize("AdminJwt")]
     public class ServiceRegistryController : GenericController<ServiceRegistryRequest, ServiceRegistryResponse, IServiceRegistryService>
     {

@@ -13,6 +13,7 @@ namespace IdentityServer.Controllers
     [ApiController]
     [Route("[controller]")]
     [CrudSummary("使用者")]
+    [SwaggerApi("BackStage", CrudOperations = CrudOperation.All & ~CrudOperation.Create)]
     //[CrudAuthorize("AdminJwt")]
     public class UserController : GenericController<UserRequest, UserResponse, IUserService>
     {
@@ -24,6 +25,7 @@ namespace IdentityServer.Controllers
 
         [HttpGet("GetProfile")]
         [CommonSummary("取得使用者資訊")]
+        [SwaggerApi("App")]
         [Authorize(AuthenticationSchemes = "AppJwt")]
         public async Task<IActionResult> GetProfile()
         {
@@ -39,6 +41,7 @@ namespace IdentityServer.Controllers
 
         [HttpPost("CreateUser")]
         [CommonSummary("創建新帳號")]
+        [SwaggerApi("BackStage")]
         //[Authorize(AuthenticationSchemes = "AdminJwt")]
         [AllowAnonymous]
         public async Task<IActionResult> CreateUser([FromBody] PasswordLoginRequest request)

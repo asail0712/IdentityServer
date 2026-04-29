@@ -27,6 +27,7 @@ namespace IdentityServer.Controllers
         [AllowAnonymous]
         [HttpPost("RequestServiceToken")]
         [CommonSummary("申請Token")]
+        [SwaggerApi("Test")]
         public async Task<IActionResult> RequestServiceToken([FromBody] ServiceTokenRequest request)
         {
             if (request == null)

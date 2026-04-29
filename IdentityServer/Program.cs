@@ -1,6 +1,7 @@
 ﻿using AetherCore.Utility;
 using AetherCore.Utility.Convention;
 using AetherCore.Utility.Filter;
+using AetherCore.Utility.Swagger;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.OpenApi.Models;
@@ -131,10 +132,12 @@ namespace IdentityServer
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c =>
             {
-                c.GenerateSwaggerDoc(builder.Environment);                  // 建立Swagger分頁 與API 要出現的分頁
+                c.GenerateSwaggerDoc(builder.Environment);                      // 建立Swagger分頁 與API 要出現的分頁
 
-                c.OperationFilter<AddSummaryOperationFilter>();             // 使用 Operation Filter 來給API加上註解                
-                c.OperationFilter<EndpointMetadataAuthorizeLockFilter>();   // 讓每個 API 依照授權(AutoAuthorize)需求自動帶出鎖頭
+                c.DocInclusionPredicate(SwaggerApiDocumentInclusion.Include);   // 設定API顯示在哪個分頁
+
+                c.OperationFilter<AddSummaryOperationFilter>();                 // 使用 Operation Filter 來給API加上註解                
+                c.OperationFilter<EndpointMetadataAuthorizeLockFilter>();       // 讓每個 API 依照授權(AutoAuthorize)需求自動帶出鎖頭
 
                 if (jwtOptions == null) return;
 

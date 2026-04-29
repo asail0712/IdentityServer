@@ -24,6 +24,7 @@ namespace IdentityServer.Controllers
         [AllowAnonymous]
         [HttpPost("LineLogin")]
         [CommonSummary("Line登入")]
+        [SwaggerApi("App")]
         public async Task<IActionResult> LineLogin([FromBody] LineLoginRequest request)
         {
             var bResult = await _service.LineLogin(request);
@@ -34,6 +35,7 @@ namespace IdentityServer.Controllers
         [AllowAnonymous]
         [HttpPost("PasswordLogin")]
         [CommonSummary("密碼登入")]
+        [SwaggerApi("App")]
         public async Task<IActionResult> PasswordLogin([FromBody] PasswordLoginRequest request)
         {
             var bResult = await _service.PasswordLogin(request);
